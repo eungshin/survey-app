@@ -1036,6 +1036,67 @@ body {
   white-space: nowrap;
 }
 
-.btn-participate:hover {
-  background: #EAF6FF;
+
+/* ========== My Page V2 (Bulletin Board) ========== */
+.v2-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.v2-tabs {
+  display: flex;
+  gap: 12px;
+}
+
+.v2-tab {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #999;
+  cursor: pointer;
+  padding: 12px 30px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 99px;
+  transition: all 0.2s;
+}
+
+.v2-tab:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.v2-tab.active {
+  color: #3196FB;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(49, 150, 251, 0.15);
+}
+
+.v2-board-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  min-height: 600px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.board-section {
+  display: none;
+}
+
+.board-section.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

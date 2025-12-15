@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전문가 설문 시스템 - 마이페이지 V3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        /* V3 Specific Styles: Sidebar Layout */
+        .v3-container {
+            display: flex;
+            min-height: 100vh;
+            background-color: #F5F9FF;
+            /* Light background for whole app */
+        }
+
+        /* Sidebar Styles */
+        .v3-sidebar {
+            width: 260px;
+            background: white;
+            border-right: 1px solid #E0E0E0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .v3-profile-summary {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .v3-username {
+            font-family: 'Pretendard', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #171717;
+            margin-bottom: 4px;
+        }
+
+        .v3-user-role {
+            font-size: 14px;
+            color: #767676;
+        }
+
+        .v3-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: 'Nanum Gothic', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #767676;
+            transition: all 0.2s;
+        }
+
+        .v3-menu-item:hover {
+            background-color: #F8F9FA;
+            color: #3196FB;
+        }
+
+        .v3-menu-item.active {
+            background-color: #EAF6FF;
+            color: #3196FB;
+        }
+
+        .v3-menu-badge {
+            margin-left: auto;
+            background: #999;
+            color: white;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .v3-menu-item.active .v3-menu-badge {
+            background: #3196FB;
+        }
+
+        /* Main Content Area */
+        .v3-main {
+            flex: 1;
+            padding: 60px 80px;
+            max-width: 1000px;
+            /* Limit width for readability */
+        }
+
+        .v3-page-title {
+            font-family: 'Pretendard', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #171717;
+            margin-bottom: 10px;
+        }
+
+        .v3-page-desc {
+            font-size: 16px;
+            color: #767676;
+            margin-bottom: 40px;
+        }
+
+        /* Reuse dashboard items but remove card container styling constraints if needed */
+        .v3-list-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .view-section {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="v3-container">
+
+        <!-- Left Sidebar -->
+        <aside class="v3-sidebar">
+            <div class="v3-profile-summary">
+                <div class="v3-username">김닥터 님</div>
+                <div class="v3-user-role">내과 전문의</div>
+            </div>
+
+            <nav>
+                <div class="v3-menu-item active" onclick="switchView('inprogress', this)">
+                    <span>진행 중인 설문</span>
+                    <span class="v3-menu-badge">4</span>
+                </div>
+                <div class="v3-menu-item" onclick="switchView('available', this)">
+                    <span>참여 가능 설문</span>
+                    <span class="v3-menu-badge">3</span>
+                </div>
+                <div class="v3-menu-item" onclick="alert('구현 예정입니다.')">
+                    <span>참여 이력</span>
+                </div>
+                <div class="v3-menu-item" onclick="alert('구현 예정입니다.')">
+                    <span>내 정보 관리</span>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="v3-main">
+
+            <!-- In Progress View -->
+            <section id="view-inprogress" class="view-section active">
+                <h1 class="v3-page-title">진행 중인 설문</h1>
+                <p class="v3-page-desc">현재 작성 중이거나 마감이 임박한 설문을 확인하세요.</p>
+
+                <div class="v3-list-container">
+                    <div class="dashboard-list" style="padding-right:0;">
+
+                        <!-- Item 1: D-Day -->
+                        <div class="dashboard-item">
+                            <div class="item-header">
+                                <span class="item-title" style="display:inline-block; margin-bottom: 4px;">고혈압 환자 추적 조사
+                                    설문</span>
+                            </div>
+                            <div class="item-meta-row">
+                                <span>케이스 <span class="item-count">10 / 10</span></span>
+                                <span class="badge badge-blue">작성 완료</span>
+                            </div>
+                            <div class="item-meta-row" style="margin-top: 12px; justify-content: space-between;">
+                                <span>2025.09.01 ~ 2025.12.15</span>
+                                <span class="badge-text-red">D-Day</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: D-4 -->
+                        <div class="dashboard-item" onclick="location.href='patient-cases.html'">
+                            <div class="item-header">
+                                <span class="item-title" style="display:inline-block; margin-bottom: 4px;">에소메프라졸 병용 환자
+                                    케이스 설문</span>
+                            </div>
+                            <div class="item-meta-row">
+                                <span>케이스 <span class="item-count">2 / 10</span></span>
+                                <span class="badge badge-blue">진행 중</span>
+                            </div>
+                            <div class="item-meta-row" style="margin-top: 12px; justify-content: space-between;">
+                                <span>2025.10.11 ~ 2025.11.10</span>
+                                <span class="badge-text-orange">D-4</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: D-16 -->
+                        <div class="dashboard-item">
+                            <div class="item-header">
+                                <span class="item-title" style="display:inline-block; margin-bottom: 4px;">기타 파일럿
+                                    설문(예시)</span>
+                            </div>
+                            <div class="item-meta-row">
+                                <span>케이스 <span class="item-count">0 / 5</span></span>
+                                <span class="badge badge-gray">임시 저장</span>
+                            </div>
+                            <div class="item-meta-row" style="margin-top: 12px; justify-content: space-between;">
+                                <span>2025.12.01 ~ 2025.12.31</span>
+                                <span class="badge-text-blue">D-16</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 4: Ended -->
+                        <div class="dashboard-item disabled" style="border-bottom: none;">
+                            <div class="item-header">
+                                <span class="item-title"
+                                    style="display:inline-block; margin-bottom: 4px; color: #999;">종료된 설문 예시</span>
+                            </div>
+                            <div class="item-meta-row" style="color: #bbb;">
+                                <span>케이스 <span class="item-count" style="color: #bbb;">10 / 10</span></span>
+                                <span class="badge badge-finished">종료</span>
+                            </div>
+                            <div class="item-meta-row"
+                                style="margin-top: 12px; justify-content: space-between; color: #bbb;">
+                                <span>2024.01.01 ~ 2024.06.30</span>
+                                <span class="badge-text-gray" style="font-weight: 700;">종료</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Available View -->
+            <section id="view-available" class="view-section">
+                <h1 class="v3-page-title">참여 가능 설문</h1>
+                <p class="v3-page-desc">새로운 연구에 참여하고 리워드를 받아보세요.</p>
+
+                <div class="v3-list-container">
+                    <div class="dashboard-list" style="padding-right:0;">
+                        <!-- Available Item 1 -->
+                        <div class="dashboard-item available-item">
+                            <span class="item-title" style="margin-bottom:0; font-size:18px;">에소메프라졸 병용 환자 케이스 설문</span>
+                            <div class="item-right-action">
+                                <span class="d-day-label">D-16</span>
+                                <button class="btn-participate"
+                                    onclick="location.href='medical-info.html'">참여하기</button>
+                            </div>
+                        </div>
+
+                        <!-- Available Item 2 -->
+                        <div class="dashboard-item available-item">
+                            <span class="item-title" style="margin-bottom:0; font-size:18px;">한미 약품 설문</span>
+                            <div class="item-right-action">
+                                <span class="d-day-label">D-16</span>
+                                <button class="btn-participate"
+                                    onclick="location.href='medical-info.html'">참여하기</button>
+                            </div>
+                        </div>
+
+                        <!-- Available Item 3 -->
+                        <div class="dashboard-item available-item" style="border-bottom:none;">
+                            <span class="item-title" style="margin-bottom:0; font-size:18px;">아스트라 제네카 설문</span>
+                            <div class="item-right-action">
+                                <span class="d-day-label">D-16</span>
+                                <button class="btn-participate"
+                                    onclick="location.href='medical-info.html'">참여하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        function switchView(viewName, menuElement) {
+            // Update Menu Styles
+            document.querySelectorAll('.v3-menu-item').forEach(el => el.classList.remove('active'));
+            menuElement.classList.add('active');
+
+            // Update View Logic
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.getElementById('view-' + viewName).classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
