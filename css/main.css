@@ -1,0 +1,822 @@
+/* ========== Reset & Base ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #DAEDFF;
+  overflow-x: hidden;
+  color: #171717;
+  min-height: 100vh;
+}
+
+/* ========== Container ========== */
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.app-container.large {
+  align-items: flex-start;
+  padding: 89px 20px;
+}
+
+/* ========== Sections (Pages) ========== */
+/* No longer needed for MPA, but keeping for structure if reused */
+.page-section {
+  display: block; /* Changed from none for MPA */
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ========== Cards ========== */
+.card {
+  background: white;
+  border-radius: 30px;
+  padding: 50px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.welcome-card {
+  max-width: 923px;
+  margin: 0 auto;
+  padding: 65px 47px 75px;
+  text-align: center;
+}
+
+.intro-section {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+
+.intro-card {
+  height: auto;
+  margin-bottom: 46px;
+  padding: 60px 87px;
+}
+
+.survey-list-card {
+  padding: 60px 129px;
+  position: relative;
+  min-height: 500px;
+}
+
+.form-card {
+  max-width: 922px;
+  margin: 0 auto;
+  border-radius: 16px;
+  padding: 60px 62px;
+  position: relative;
+}
+
+.patient-cases-card {
+  max-width: 922px;
+  margin: 0 auto;
+  border-radius: 16px;
+  padding: 71px 72px;
+}
+
+/* ========== Typography ========== */
+.page-title {
+  color: #3196FB;
+  font-size: 36px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  color: #3196FB;
+  font-size: 40px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.welcome-title {
+  color: #171717;
+  font-size: 36px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.description {
+  color: #444444;
+  font-size: 22px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  line-height: 34px;
+  margin-bottom: 44px;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.intro-text {
+  color: #171717;
+  font-size: 22px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+.notice {
+  color: #767676;
+  font-size: 16px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+  line-height: 30px;
+  margin-top: 26px;
+}
+
+.modal-title {
+  color: #3196FB;
+  font-size: 36px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.modal-description {
+  color: #444444;
+  font-size: 19px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  line-height: 30px;
+  margin-bottom: 36px;
+}
+
+.question-title {
+  color: #171717;
+  font-size: 26px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+  line-height: 40px;
+  margin-bottom: 24px;
+}
+
+/* ========== Buttons ========== */
+.btn {
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 800;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* For <a> tags behaving like buttons */
+}
+
+.btn-primary {
+  background: #3196FB;
+  color: white;
+  font-size: 22px;
+  padding: 15px 40px;
+  min-width: 157px;
+  height: 62px;
+}
+
+.btn-primary:hover {
+  background: #2180e0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(49, 150, 251, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: white;
+  color: #171717;
+  font-size: 22px;
+  border: 2px solid #171717;
+  padding: 15px 40px;
+  min-width: 250px;
+  height: 70px;
+}
+
+.btn-secondary:hover {
+  background: #f5f5f5;
+}
+
+.btn-large {
+  width: 360px;
+  height: 91px;
+  font-size: 40px;
+  margin: 50px auto 0;
+  display: block;
+}
+
+.btn-text {
+  background: transparent;
+  color: #3196FB;
+  font-size: 24px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+  padding: 10px 20px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-text:hover {
+  background: rgba(49, 150, 251, 0.1);
+  border-radius: 8px;
+}
+
+.btn-outline-primary {
+  background: white;
+  color: #3196FB;
+  font-size: 20px;
+  border: 2px solid #3196FB;
+  border-radius: 22px;
+  padding: 10px 24px;
+  height: 44px;
+  font-weight: 700;
+}
+
+.btn-outline-primary:hover {
+  background: rgba(49, 150, 251, 0.05);
+}
+
+.btn-submit-disabled {
+  width: 331px;
+  height: 72px;
+  background: #D9D9D9;
+  color: white;
+  font-size: 30px;
+  border-radius: 16px;
+  border: none;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 800;
+  margin: 40px auto 20px;
+  display: block;
+  cursor: not-allowed;
+}
+
+.button-group {
+  display: flex;
+  gap: 56px;
+  margin-bottom: 26px;
+  justify-content: center;
+}
+
+/* ========== Modal ========== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal {
+  background: white;
+  border-radius: 30px;
+  padding: 56px 59px;
+  max-width: 639px;
+  width: 90%;
+}
+
+/* ========== Forms ========== */
+.form-group {
+  margin-bottom: 28px;
+}
+
+.form-group label {
+  display: block;
+  color: #444444;
+  font-size: 20px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  margin-bottom: 11px;
+}
+
+.form-input {
+  width: 100%;
+  height: 49px;
+  padding: 12px 22px;
+  border: 1px solid #909090;
+  border-radius: 8px;
+  font-size: 18px;
+  font-family: 'Pretendard', sans-serif;
+  color: #171717;
+}
+
+.form-input::placeholder {
+  color: #999999;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #3196FB;
+}
+
+.form-input.small {
+  width: 239px;
+}
+
+/* ========== Radio & Checkbox ========== */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.radio-item input[type="radio"] {
+  appearance: none;
+  width: 21.39px;
+  height: 21.39px;
+  border: 2px solid #171717;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.radio-item input[type="radio"]:checked {
+  background: #3196FB;
+  border-color: #3196FB;
+}
+
+.radio-item input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  width: 9.98px;
+  height: 9.98px;
+  background: white;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.radio-item label {
+  color: #171717;
+  font-size: 22px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 400;
+  line-height: 40px;
+  cursor: pointer;
+  flex: 1;
+}
+
+/* ========== Survey List ========== */
+.survey-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 40px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 20px;
+}
+
+.survey-item {
+  display: flex;
+  align-items: center;
+}
+
+.survey-item input[type="radio"] {
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #171717;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+  margin-right: 22px;
+  flex-shrink: 0;
+}
+
+.survey-item input[type="radio"]:checked {
+  background: #3196FB;
+  border-color: #3196FB;
+}
+
+.survey-item input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.survey-item label {
+  color: #171717;
+  font-size: 32px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+  line-height: 36px;
+  cursor: pointer;
+}
+
+/* ========== Progress Sidebar ========== */
+.content-with-sidebar {
+  display: flex;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.progress-sidebar {
+  width: 284px;
+  background: white;
+  border-radius: 16px;
+  padding: 68px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.progress-sidebar::before {
+  content: '';
+  position: absolute;
+  left: 55.9px;
+  top: 84px;
+  width: 3px;
+  height: calc(100% - 168px);
+  background: #D9D9D9;
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-icon {
+  width: 31.8px;
+  height: 31.8px;
+  background: #CDCDCD;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.progress-step.completed .step-icon,
+.progress-step.active .step-icon {
+  background: #3196FB;
+}
+
+.step-number {
+  width: 31.8px;
+  height: 31.8px;
+  background: #CDCDCD;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+  color: #171717;
+  flex-shrink: 0;
+}
+
+.progress-step.completed .step-number,
+.progress-step.active .step-number {
+  background: #3196FB;
+  color: white;
+}
+
+.step-label {
+  color: #171717;
+  font-size: 16px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+/* ========== Question Section ========== */
+.question-section {
+  margin-bottom: 56px;
+}
+
+.year-input-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.year-label {
+  color: #171717;
+  font-size: 22px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+/* ========== Form Actions ========== */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+}
+
+/* ========== Patient Cases ========== */
+.patient-cases-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 922px;
+  margin: 0 auto;
+}
+
+.patient-cases-card {
+  width: 100%;
+  border-radius: 16px;
+  padding: 71px 62px 60px;
+}
+
+.patient-cases-card .page-title {
+  margin-bottom: 18px;
+}
+
+.case-count-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.case-count {
+  font-size: 32px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+}
+
+.count-label {
+  color: #444444;
+}
+
+.count-value {
+  color: #3196FB;
+  font-weight: 800;
+  margin-left: 8px;
+}
+
+.patient-cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 0;
+}
+
+.patient-case-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.case-info {
+  display: flex;
+  align-items: center;
+  gap: 67px;
+  flex-wrap: wrap;
+}
+
+.case-name {
+  color: #444444;
+  font-size: 23px;
+  font-weight: 500;
+  font-family: 'Pretendard', sans-serif;
+  min-width: 257px;
+  line-height: 40px;
+}
+
+.case-status {
+  font-size: 20px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 400;
+  min-width: 97px;
+  line-height: 40px;
+}
+
+.case-status.in-progress {
+  color: #3196FB;
+}
+
+.case-status.completed {
+  color: #909090;
+}
+
+.btn-outline-primary {
+  background: white;
+  color: #3196FB;
+  font-size: 20px;
+  border: 2px solid #3196FB;
+  border-radius: 21.79px;
+  padding: 0;
+  width: 142px;
+  height: 44px;
+  font-weight: 700;
+}
+
+.btn-outline-primary:hover {
+  background: rgba(49, 150, 251, 0.05);
+}
+
+.add-case-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 22px;
+  margin-top: 50px;
+}
+
+.add-case-label {
+  color: #3196FB;
+  font-size: 22px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.btn-add-case {
+  width: 84px;
+  height: 84px;
+  background: #DAEDFF;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-add-case:hover {
+  background: #c5e0fb;
+  transform: scale(1.05);
+}
+
+.btn-add-case svg {
+  width: 36px;
+  height: 36px;
+}
+
+.patient-cases-card .btn-submit-disabled {
+  width: 331px;
+  height: 72px;
+  background: #D9D9D9;
+  color: white;
+  font-size: 30px;
+  border-radius: 16px;
+  border: none;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 800;
+  cursor: not-allowed;
+  margin: 60px auto 0;
+  display: block;
+}
+
+.submit-notice {
+  text-align: center;
+  color: #999999;
+  font-size: 16px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+  line-height: 30px;
+  max-width: 817px;
+  margin-top: 20px;
+}
+
+/* ========== Scrollbar Styling ========== */
+.survey-list::-webkit-scrollbar {
+  width: 11px;
+}
+
+.survey-list::-webkit-scrollbar-track {
+  background: #D9D9D9;
+  border-radius: 5.5px;
+}
+
+.survey-list::-webkit-scrollbar-thumb {
+  background: #3196FB;
+  border-radius: 5.5px;
+}
+
+/* ========== Responsive Design ========== */
+@media screen and (max-width: 1200px) {
+  .content-with-sidebar {
+    flex-direction: column;
+  }
+
+  .progress-sidebar {
+    width: 100%;
+    flex-direction: row;
+    padding: 30px 20px;
+    overflow-x: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app-container {
+    padding: 20px 10px;
+  }
+
+  .card {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+
+  .welcome-card,
+  .intro-card,
+  .survey-list-card {
+    padding: 40px 24px;
+  }
+
+  .welcome-title,
+  .page-title {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .description,
+  .intro-text {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .btn-large {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .survey-item label {
+    font-size: 24px;
+  }
+
+  .question-title {
+    font-size: 22px;
+  }
+
+  .radio-item label {
+    font-size: 18px;
+  }
+}

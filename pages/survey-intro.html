@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전문가 설문 시스템 - 설문 안내</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <div class="app-container large">
+
+        <!-- ========== Page 2: Survey Intro ========== -->
+        <section class="page-section">
+            <div class="intro-section">
+                <div class="card intro-card">
+                    <h1 class="page-title">전문가 설문 안내</h1>
+
+                    <p class="intro-text">
+                        이곳에서는 의료 기관에서 요청한 전문가 대상 설문에 참여하실 수 있습니다.<br>
+                        응답 문항은 약 20개 내외이며, 임상 현장의 실질적인 경험과 인사이트를 바탕으로<br>
+                        심도 있게 구성되어 있습니다.<br><br>
+                        귀한 시간을 내어 참여해 주시는 선생님께 감사드리며, 제공해 주신 의견은<br>
+                        의료 발전에 소중히 활용됩니다.
+                    </p>
+                </div>
+
+                <div class="card survey-list-card">
+                    <h2 class="section-title">참여 가능 설문</h2>
+
+                    <div class="survey-list">
+                        <div class="survey-item">
+                            <input type="radio" name="survey" id="survey1" value="1" checked>
+                            <label for="survey1">녹십자 HCP 설문</label>
+                        </div>
+
+                        <div class="survey-item">
+                            <input type="radio" name="survey" id="survey2" value="2">
+                            <label for="survey2">녹십자 HCP 설문</label>
+                        </div>
+
+                        <div class="survey-item">
+                            <input type="radio" name="survey" id="survey3" value="3">
+                            <label for="survey3">녹십자 HCP 설문</label>
+                        </div>
+
+                        <div class="survey-item">
+                            <input type="radio" name="survey" id="survey4" value="4">
+                            <label for="survey4">녹십자 HCP 설문</label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-large" onclick="handleSurveyStart()">설문 참여하기</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function handleSurveyStart() {
+            // Get selected survey
+            const selectedSurvey = document.querySelector('input[name="survey"]:checked');
+            if (selectedSurvey) {
+                sessionStorage.setItem('selected_survey', selectedSurvey.value);
+                location.href = 'medical-info.html';
+            } else {
+                alert('참여할 설문을 선택해주세요.');
+            }
+        }
+    </script>
+</body>
+
+</html>

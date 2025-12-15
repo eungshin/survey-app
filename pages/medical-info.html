@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전문가 설문 시스템 - 의료진 정보</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <div class="app-container large">
+
+        <!-- ========== Page 3: Medical Info ========== -->
+        <section class="page-section">
+            <div class="content-with-sidebar">
+                <!-- Progress Sidebar -->
+                <div class="progress-sidebar">
+                    <div class="progress-step completed">
+                        <div class="step-icon">
+                            <svg width="15" height="9" viewBox="0 0 15 9" fill="none">
+                                <path d="M1 4L5 8L14 1" stroke="white" stroke-width="3" />
+                            </svg>
+                        </div>
+                        <span class="step-label">설문 소개 / 인증</span>
+                    </div>
+
+                    <div class="progress-step completed">
+                        <div class="step-icon">
+                            <svg width="15" height="9" viewBox="0 0 15 9" fill="none">
+                                <path d="M1 4L5 8L14 1" stroke="white" stroke-width="3" />
+                            </svg>
+                        </div>
+                        <span class="step-label">설문 정보/개인정보동의</span>
+                    </div>
+
+                    <div class="progress-step active">
+                        <div class="step-icon">
+                            <svg width="15" height="9" viewBox="0 0 15 9" fill="none">
+                                <path d="M1 4L5 8L14 1" stroke="white" stroke-width="3" />
+                            </svg>
+                        </div>
+                        <span class="step-label">의료진 정보 설문</span>
+                    </div>
+
+                    <div class="progress-step">
+                        <div class="step-number">4</div>
+                        <span class="step-label">환자 케이스 준비</span>
+                    </div>
+
+                    <div class="progress-step">
+                        <div class="step-number">5</div>
+                        <span class="step-label">환자별 설문</span>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="card form-card">
+                    <form id="medicalInfoForm" onsubmit="handleMedicalInfoSubmit(event)">
+                        <!-- Question 1: Region -->
+                        <div class="question-section">
+                            <h3 class="question-title">1. 근무하고 계신 병원의 지역은 어디인가요?</h3>
+
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" name="region" id="region1" value="서울/경기/인천" checked>
+                                    <label for="region1">서울 / 경기 / 인천</label>
+                                </div>
+
+                                <div class="radio-item">
+                                    <input type="radio" name="region" id="region2" value="부산/울산/경상남도">
+                                    <label for="region2">부산 / 울산 / 경상남도</label>
+                                </div>
+
+                                <div class="radio-item">
+                                    <input type="radio" name="region" id="region3" value="대구/경상북도">
+                                    <label for="region3">대구 / 경상 북도</label>
+                                </div>
+
+                                <div class="radio-item">
+                                    <input type="radio" name="region" id="region4" value="광주/전라도">
+                                    <label for="region4">광주 / 전라도</label>
+                                </div>
+
+                                <div class="radio-item">
+                                    <input type="radio" name="region" id="region5" value="대전/충청도">
+                                    <label for="region5">대전 / 충청도</label>
+                                </div>
+
+                                <div class="radio-item">
+                                    <input type="radio" name="region" id="region6" value="기타">
+                                    <label for="region6">기타</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 2: Hospital Type and Name -->
+                        <div class="question-section">
+                            <h3 class="question-title">2. 선생님께서 근무하시는 병원의 타입과 병원명을 말씀해 주세요</h3>
+
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" name="hospitalType" id="hospital1" value="서울/경기/인천" checked>
+                                    <label for="hospital1">서울 / 경기 / 인천</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-top: 16px;">
+                                <input type="text" id="hospitalName" placeholder="병원명 :" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <!-- Question 3: Department -->
+                        <div class="question-section">
+                            <h3 class="question-title">3. 선생님의 진료과는 무엇인가요?</h3>
+
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" name="department" id="dept1" value="심장내과/순환기내과" checked
+                                        onchange="toggleDeptOther()">
+                                    <label for="dept1">심장내과 / 순환기내과</label>
+                                </div>
+
+                                <div class="radio-item">
+                                    <input type="radio" name="department" id="dept2" value="신경과"
+                                        onchange="toggleDeptOther()">
+                                    <label for="dept2">신경과</label>
+                                </div>
+
+                                <div class="radio-item">
+                                    <input type="radio" name="department" id="dept3" value="기타"
+                                        onchange="toggleDeptOther()">
+                                    <label for="dept3">기타(자세히)</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-top: 16px; display: none;" id="deptOtherGroup">
+                                <input type="text" id="departmentOther" placeholder="기타 진료과 입력"
+                                    class="form-input small">
+                            </div>
+                        </div>
+
+                        <!-- Question 4: License Year -->
+                        <div class="question-section">
+                            <h3 class="question-title">4. 선생님의 자격증 취득 연도를 말씀해 주세요</h3>
+
+                            <div class="year-input-group">
+                                <input type="number" id="licenseYear" placeholder="2020" class="form-input small"
+                                    min="1950" max="2025" required>
+                                <span class="year-label">년도</span>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-text" onclick="history.back()">
+                                <svg width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M20 11H4M4 11L11 4M4 11L11 18" stroke="#3196FB" stroke-width="3" />
+                                </svg>
+                                이전
+                            </button>
+                            <button type="submit" class="btn btn-primary">다음</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Toggle Department Other Input
+        function toggleDeptOther() {
+            const dept3 = document.getElementById('dept3');
+            const deptOtherGroup = document.getElementById('deptOtherGroup');
+
+            if (dept3.checked) {
+                deptOtherGroup.style.display = 'block';
+            } else {
+                deptOtherGroup.style.display = 'none';
+            }
+        }
+
+        // Handle Medical Info Form Submit
+        function handleMedicalInfoSubmit(e) {
+            e.preventDefault();
+
+            const hospitalName = document.getElementById('hospitalName').value;
+            const licenseYear = document.getElementById('licenseYear').value;
+
+            if (!hospitalName) {
+                alert('병원명을 입력해주세요.');
+                return;
+            }
+
+            if (!licenseYear) {
+                alert('자격증 취득 연도를 입력해주세요.');
+                return;
+            }
+
+            // Save data to sessionStorage
+            sessionStorage.setItem('hospitalName', hospitalName);
+            sessionStorage.setItem('licenseYear', licenseYear);
+
+            // Redirect
+            location.href = 'patient-cases.html';
+        }
+    </script>
+</body>
+
+</html>

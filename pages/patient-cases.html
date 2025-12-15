@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전문가 설문 시스템 - 환자 케이스</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <div class="app-container large">
+
+        <!-- ========== Page 4: Patient Cases ========== -->
+        <section class="page-section">
+            <div class="patient-cases-wrapper">
+                <!-- White Card with everything inside -->
+                <div class="card patient-cases-card">
+                    <h1 class="page-title">에소메프라졸 병용 환자 케이스 설문</h1>
+
+                    <div class="case-count-wrapper">
+                        <div class="case-count">
+                            <span class="count-label">등록된 케이스 :</span>
+                            <span class="count-value">2 / 10</span>
+                        </div>
+                    </div>
+
+                    <div class="patient-cases-list">
+                        <div class="patient-case-item">
+                            <div class="case-info">
+                                <h3 class="case-name">환자 케이스 01 (PJ01234)</h3>
+                                <span class="case-status in-progress">작성중</span>
+                            </div>
+                            <button class="btn btn-outline-primary">수정하기</button>
+                        </div>
+
+                        <div class="patient-case-item">
+                            <div class="case-info">
+                                <h3 class="case-name">환자 케이스 02 (PJ02234)</h3>
+                                <span class="case-status in-progress">작성중</span>
+                            </div>
+                            <button class="btn btn-outline-primary">수정하기</button>
+                        </div>
+
+                        <div class="patient-case-item">
+                            <div class="case-info">
+                                <h3 class="case-name">환자 케이스 03 (PJ03234)</h3>
+                                <span class="case-status completed">완료</span>
+                            </div>
+                            <button class="btn btn-outline-primary">수정하기</button>
+                        </div>
+
+                        <div class="patient-case-item">
+                            <div class="case-info">
+                                <h3 class="case-name">환자 케이스 04 (PJ04234)</h3>
+                                <span class="case-status in-progress">작성중</span>
+                            </div>
+                            <button class="btn btn-outline-primary">수정하기</button>
+                        </div>
+
+                        <div class="patient-case-item">
+                            <div class="case-info">
+                                <h3 class="case-name">환자 케이스 05 (PJ05234)</h3>
+                                <span class="case-status in-progress">작성중</span>
+                            </div>
+                            <button class="btn btn-outline-primary">수정하기</button>
+                        </div>
+                    </div>
+
+                    <div class="add-case-section">
+                        <span class="add-case-label">새 환자 케이스 추가</span>
+                        <button class="btn-add-case" onclick="addNewCase()">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                                <path d="M15 6V24M6 15H24" stroke="#3196FB" stroke-width="3" stroke-linecap="round" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <button class="btn btn-submit-disabled" id="submitBtn" disabled onclick="submitSurvey()">
+                        설문 최종 제출
+                    </button>
+                </div>
+
+                <!-- Notice outside card -->
+                <p class="submit-notice">
+                    모든 환자 케이스 설문이 완료된 후 제출이 활성화 됩니다. 최종 제출 후에는 설문 내용을 수정하실 수 없습니다.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Add New Case
+        function addNewCase() {
+            alert('새로운 환자 케이스를 추가하시겠습니까?');
+            // Logic for adding new case (mock)
+        }
+
+        // Submit Survey
+        function submitSurvey() {
+            if (confirm('설문을 최종 제출하시겠습니까? 제출 후에는 수정할 수 없습니다.')) {
+                alert('설문이 제출되었습니다. 감사합니다!');
+                // Clear session
+                sessionStorage.clear();
+                location.href = '../index.html';
+            }
+        }
+
+        // Check if all cases are completed to enable submit
+        function checkSubmitEnabled() {
+            const completedCases = document.querySelectorAll('.case-status.completed').length;
+            const totalCases = document.querySelectorAll('.patient-case-item').length;
+
+            const submitBtn = document.getElementById('submitBtn');
+            // Mock logic: If we want to test enable, we can check logic. 
+            // Original code Logic: (completedCases === totalCases && totalCases > 0)
+            if (completedCases === totalCases && totalCases > 0) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('btn-submit-disabled');
+                submitBtn.classList.add('btn-primary');
+            }
+        }
+
+        // Initial check
+        checkSubmitEnabled();
+    </script>
+</body>
+
+</html>
