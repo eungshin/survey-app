@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전문가 설문 시스템 - 마이페이지</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <div class="app-container large">
+        <section class="page-section">
+            <!-- Header -->
+            <div class="mypage-header">
+                <h1 class="page-title">마이 페이지</h1>
+                <div class="header-line"></div>
+            </div>
+
+            <!-- Dashboard Layout -->
+            <div class="dashboard-grid">
+                <!-- Left Column: In Progress -->
+                <div class="card dashboard-card">
+                    <h2 class="dashboard-title">진행 중</h2>
+                    <div class="dashboard-list">
+
+                        <!-- Item 1 (Reordered: D-Day first) -->
+                        <div class="dashboard-item">
+                            <div class="item-header">
+                                <span class="item-title" style="display:inline-block; margin-bottom: 4px;">고혈압 환자 추적 조사
+                                    설문</span>
+                            </div>
+
+                            <div class="item-meta-row">
+                                <span>케이스 <span class="item-count">10 / 10</span></span>
+                                <span class="badge badge-blue">작성 완료</span>
+                            </div>
+
+                            <div class="item-meta-row" style="margin-top: 12px; justify-content: space-between;">
+                                <span>2025.09.01 ~ 2025.12.15</span>
+                                <span class="badge-text-red">D-Day</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 (Reordered: D-4 second) -->
+                        <div class="dashboard-item" onclick="location.href='patient-cases.html'">
+                            <div class="item-header">
+                                <span class="item-title" style="display:inline-block; margin-bottom: 4px;">에소메프라졸 병용 환자
+                                    케이스 설문</span>
+                            </div>
+
+                            <div class="item-meta-row">
+                                <span>케이스 <span class="item-count">2 / 10</span></span>
+                                <span class="badge badge-blue">진행 중</span>
+                            </div>
+
+                            <div class="item-meta-row" style="margin-top: 12px; justify-content: space-between;">
+                                <span>2025.10.11 ~ 2025.11.10</span>
+                                <span class="badge-text-orange">D-4</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 (Kept third: D-16) -->
+                        <div class="dashboard-item">
+                            <div class="item-header">
+                                <span class="item-title" style="display:inline-block; margin-bottom: 4px;">기타 파일럿
+                                    설문(예시)</span>
+                            </div>
+
+                            <div class="item-meta-row">
+                                <span>케이스 <span class="item-count">0 / 5</span></span>
+                                <span class="badge badge-gray">임시 저장</span>
+                            </div>
+
+                            <div class="item-meta-row" style="margin-top: 12px; justify-content: space-between;">
+                                <span>2025.12.01 ~ 2025.12.31</span>
+                                <span class="badge-text-blue">D-16</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 (Ended Example) -->
+                        <div class="dashboard-item disabled">
+                            <div class="item-header">
+                                <span class="item-title"
+                                    style="display:inline-block; margin-bottom: 4px; color: #999;">종료된 설문 예시</span>
+                            </div>
+
+                            <div class="item-meta-row" style="color: #bbb;">
+                                <span>케이스 <span class="item-count" style="color: #bbb;">10 / 10</span></span>
+                                <span class="badge badge-finished">종료</span>
+                            </div>
+
+                            <div class="item-meta-row"
+                                style="margin-top: 12px; justify-content: space-between; color: #bbb;">
+                                <span>2024.01.01 ~ 2024.06.30</span>
+                                <span class="badge-text-gray" style="font-weight: 700;">종료</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right Column: Available -->
+                <div class="card dashboard-card">
+                    <h2 class="dashboard-title text-blue">참여 가능</h2>
+                    <div class="dashboard-list">
+                        <!-- Available Item 1 -->
+                        <div class="dashboard-item available-item">
+                            <span class="item-title" style="margin-bottom:0; font-size:18px;">에소메프라졸 병용 환자 케이스 설문</span>
+                            <div class="item-right-action">
+                                <span class="d-day-label">D-16</span>
+                                <button class="btn-participate"
+                                    onclick="location.href='medical-info.html'">참여하기</button>
+                            </div>
+                        </div>
+
+                        <!-- Available Item 2 -->
+                        <div class="dashboard-item available-item">
+                            <span class="item-title" style="margin-bottom:0; font-size:18px;">한미 약품 설문</span>
+                            <div class="item-right-action">
+                                <span class="d-day-label">D-16</span>
+                                <button class="btn-participate"
+                                    onclick="location.href='medical-info.html'">참여하기</button>
+                            </div>
+                        </div>
+
+                        <!-- Available Item 3 -->
+                        <div class="dashboard-item available-item">
+                            <span class="item-title" style="margin-bottom:0; font-size:18px;">아스트라 제네카 설문</span>
+                            <div class="item-right-action">
+                                <span class="d-day-label">D-16</span>
+                                <button class="btn-participate"
+                                    onclick="location.href='medical-info.html'">참여하기</button>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-item-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

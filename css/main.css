@@ -31,7 +31,8 @@ body {
 /* ========== Sections (Pages) ========== */
 /* No longer needed for MPA, but keeping for structure if reused */
 .page-section {
-  display: block; /* Changed from none for MPA */
+  display: block;
+  /* Changed from none for MPA */
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
@@ -176,7 +177,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none; /* For <a> tags behaving like buttons */
+  text-decoration: none;
+  /* For <a> tags behaving like buttons */
 }
 
 .btn-primary {
@@ -819,4 +821,221 @@ body {
   .radio-item label {
     font-size: 18px;
   }
+}
+
+/* ========== My Page (Dashboard) ========== */
+.mypage-header {
+  margin-bottom: 40px;
+}
+
+.header-line {
+  width: 100%;
+  height: 2px;
+  background: #3196FB;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard-card {
+  height: 600px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-title {
+  font-size: 24px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+  color: #909090;
+  margin-bottom: 30px;
+}
+
+.dashboard-title.text-blue {
+  color: #3196FB;
+}
+
+.dashboard-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Refined Custom Scrollbar */
+.dashboard-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dashboard-list::-webkit-scrollbar-track {
+  background: #E0E0E0;
+  border-radius: 2px;
+}
+
+.dashboard-list::-webkit-scrollbar-thumb {
+  background: #3196FB;
+  border-radius: 2px;
+}
+
+/* Disabled Item Styles */
+.dashboard-item.disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.dashboard-item.disabled:hover {
+  background: none;
+  padding-left: 0;
+}
+
+.badge-finished {
+  background: #F0F0F0;
+  color: #999;
+}
+
+.dashboard-item {
+  padding: 24px 0;
+  border-bottom: 1px solid #E0E0E0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dashboard-item:hover {
+  background: #F9F9F9;
+  padding-left: 10px;
+}
+
+.item-title {
+  font-size: 20px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  color: #171717;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.item-meta {
+  font-size: 16px;
+  color: #767676;
+}
+
+.dashboard-item-placeholder {
+  height: 70px;
+  border-bottom: 1px solid #E0E0E0;
+  margin-bottom: 20px;
+}
+
+/* Responsive for My Page */
+@media screen and (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card {
+    height: auto;
+    min-height: 400px;
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 8px;
+}
+
+.badge-blue {
+  background: #EAF6FF;
+  color: #3196FB;
+}
+
+.badge-gray {
+  background: #F0F0F0;
+  color: #767676;
+}
+
+.badge-text-red {
+  color: #e23b3b;
+  font-weight: 800;
+  font-size: 20px;
+  /* Increased size */
+  margin-left: auto;
+}
+
+.badge-text-blue {
+  color: #3196FB;
+  font-weight: 800;
+  font-size: 20px;
+  /* Increased size */
+  margin-left: auto;
+}
+
+.badge-text-orange {
+  color: #FF8A00;
+  font-weight: 800;
+  font-size: 20px;
+  /* Increased size */
+  margin-left: auto;
+}
+
+
+.item-meta-row {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 16px;
+  color: #767676;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 400;
+}
+
+
+/* Available Item Specifics */
+.available-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-right-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 80px;
+}
+
+.d-day-label {
+  color: #3196FB;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.btn-participate {
+  background: white;
+  border: 2px solid #3196FB;
+  border-radius: 22px;
+  color: #3196FB;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  /* Increased from 13px, not quite 20px to fit */
+  padding: 6px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-participate:hover {
+  background: #EAF6FF;
 }
