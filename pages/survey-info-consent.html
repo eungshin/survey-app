@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전문가 설문 시스템 - 개인정보 수집 동의</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        .consent-card {
+            max-width: 1586px;
+            width: 100%;
+            padding: 80px 100px;
+            margin: 0 auto;
+        }
+
+        .consent-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .consent-title {
+            color: #3196FB;
+            font-size: 50px;
+            font-weight: 800;
+            font-family: 'Nanum Gothic', sans-serif;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .consent-intro {
+            font-size: 30px;
+            line-height: normal;
+            /* Adjusted from 40px for better fit */
+            text-align: center;
+            margin-bottom: 60px;
+            word-break: keep-all;
+        }
+
+        .consent-section-title {
+            color: #3196FB;
+            font-family: 'Nanum Gothic', sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .consent-desc {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            text-align: center;
+            word-break: keep-all;
+        }
+
+        .consent-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .consent-table th {
+            background-color: #D9D9D9;
+            padding: 15px;
+            /* Reduced padding */
+            font-weight: 700;
+            border: 1px solid #909090;
+        }
+
+        .consent-table td {
+            padding: 15px;
+            /* Reduced padding */
+            border: 1px solid #909090;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .consent-question {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 20px 0 15px;
+        }
+
+        .consent-radios {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+
+        /* Specific styles for the bank info table */
+        .bank-table {
+            width: 100%;
+            max-width: 1000px;
+            /* Limit width */
+            margin: 0 auto 40px;
+        }
+
+        .bank-table th {
+            width: 20%;
+            background-color: #D9D9D9;
+        }
+
+        .bank-table td {
+            background-color: white;
+        }
+
+        .bank-input {
+            width: 100%;
+            border: none;
+            font-size: 18px;
+            padding: 5px;
+            text-align: center;
+            outline: none;
+        }
+
+        .date-section {
+            display: flex;
+            justify-content: flex-end;
+            /* Align right */
+            align-items: center;
+            gap: 10px;
+            font-size: 30px;
+            font-weight: normal;
+            margin-top: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .date-input {
+            width: 80px;
+            font-size: 30px;
+            text-align: center;
+            border: none;
+            border-bottom: 1px solid #000;
+        }
+
+        .name-section {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            font-size: 30px;
+            margin-top: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-next-step {
+            width: 200px;
+            height: 60px;
+            background-color: #3196FB;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            /* Standard radius */
+            cursor: pointer;
+            margin: 80px auto 0;
+            display: block;
+        }
+
+        .section-label {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .consent-card {
+                padding: 30px 20px;
+            }
+
+            .consent-title {
+                font-size: 30px;
+            }
+
+            .consent-intro {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container large" style="position: relative;">
+        <!-- Global Header Icons -->
+        <div class="global-header-icons">
+            <button class="header-icon-btn" onclick="showMypageModal()">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="11" r="5" stroke="#666" stroke-width="2" />
+                    <path d="M6 26C6 20.4772 10.4772 16 16 16C21.5228 16 26 20.4772 26 26" stroke="#666"
+                        stroke-width="2" />
+                </svg>
+            </button>
+            <button class="header-icon-btn" onclick="showExitModal()">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M8 8L24 24M8 24L24 8" stroke="#666" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- MyPage Confirmation Modal -->
+        <div class="modal-overlay" id="mypageModal">
+            <div class="modal">
+                <p class="modal-description" style="text-align: center; margin-bottom: 24px; font-size: 18px;">
+                    설문 조사를 중단하고 마이페이지로 이동하시겠습니까?
+                </p>
+                <div class="modal-actions" style="display: flex; justify-content: center; gap: 12px;">
+                    <button class="btn btn-outline-primary" style="min-width: 100px;" onclick="goToMypage()">예</button>
+                    <button class="btn btn-outline-primary" style="min-width: 100px; border-color: #ccc; color: #666;"
+                        onclick="closeMypageModal()">아니요</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exit Confirmation Modal -->
+        <div class="modal-overlay" id="exitModal">
+            <div class="modal">
+                <p class="modal-description" style="text-align: center; margin-bottom: 24px; font-size: 18px;">
+                    설문을 끝내고 메타 세미나 공간으로 이동하시겠습니까?
+                </p>
+                <div class="modal-actions" style="display: flex; justify-content: center; gap: 12px;">
+                    <button class="btn btn-outline-primary" style="min-width: 100px;" onclick="exitPage()">예</button>
+                    <button class="btn btn-outline-primary" style="min-width: 100px; border-color: #ccc; color: #666;"
+                        onclick="closeExitModal()">아니요</button>
+                </div>
+            </div>
+        </div>
+        <section class="page-section">
+            <div class="content-with-sidebar">
+                <!-- Progress Sidebar -->
+                <div class="progress-sidebar">
+                    <div class="progress-step completed" onclick="location.href='survey-intro.html'"
+                        style="cursor: pointer;">
+                        <div class="step-icon">
+                            <svg width="15" height="9" viewBox="0 0 15 9" fill="none">
+                                <path d="M1 4L5 8L14 1" stroke="white" stroke-width="3" />
+                            </svg>
+                        </div>
+                        <span class="step-label">참여 가능 설문</span>
+                    </div>
+
+                    <div class="progress-step active" onclick="location.href='survey-info-consent.html'"
+                        style="cursor: pointer;">
+                        <div class="step-number">2</div>
+                        <span class="step-label">개인정보동의</span>
+                    </div>
+
+                    <div class="progress-step" onclick="location.href='medical-info.html'" style="cursor: pointer;">
+                        <div class="step-number">3</div>
+                        <span class="step-label">의료진 정보 설문</span>
+                    </div>
+
+                    <div class="progress-step" onclick="location.href='patient-cases.html'" style="cursor: pointer;">
+                        <div class="step-number">4</div>
+                        <span class="step-label">환자별 설문</span>
+                    </div>
+                </div>
+
+                <div class="card consent-card">
+
+                    <h1 class="consent-title">에소메프라졸 병용 환자 케이스 설문</h1>
+
+                    <div class="consent-intro">
+                        <p>본 설문은 순환기내과 및 신경과 교수진을 대상으로, 주요 질환 치료 시 위장관 부작용 예방을 위한</p>
+                        <p>위장관 보호제 병용 현황과 인식을 조사하는 데 목적이 있습니다.</p>
+                        <p>특히, PPI 계열(예: 에소메프라졸 등)의 처방 현황을 자연스럽게 유도하고, 처방하지 않았을 경우의</p>
+                        <p>이유를 파악하여 마케팅 및 교육 인사이트를 확보하고자 합니다.</p>
+                    </div>
+
+                    <h2 class="consent-section-title">개인 정보 수집 동의서</h2>
+
+                    <p class="consent-desc">
+                        마이원 주식회사는 설문조사 참여자의 개인정보를 중요시 하며 에소메프라졸 병용 환자 케이스 조사<br>
+                        참여를 위해 회사는 아래와 같이 귀하의 개인정보를 수집·이용 및 제3 자에게 제공하고자 합니다.
+                    </p>
+
+                    <!-- Section 1 -->
+                    <span class="section-label">1. 일반개인정보의 수집·이용 내역</span>
+                    <table class="consent-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">항목</th>
+                                <th style="width: 40%;">수집 / 이용</th>
+                                <th style="width: 30%;">보유 기간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>이름, 주소, 연락처, 가구소득, 학력, 직업, 가구수 등 조사에 맞게 수정</td>
+                                <td>설문 조사 후 경품 등</td>
+                                <td>프로젝트 계약 종료후 5개월 이내</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 12px; color: #666; margin-bottom: 20px;">귀하께서는 위의 일반 개인정보 수집·이용에 대한 동의를 거부할 권리가
+                        있습니다. 그러나 동의를 거부할 경우 조사에 참여하실 수 없습니다.</p>
+
+                    <p class="consent-question">AG-01. 귀하께서는 위와 같은 일반 개인 정보를 수집, 이용하시는데 동의하십니까?</p>
+                    <div class="consent-radios">
+                        <div class="radio-item">
+                            <input type="radio" name="ag1" id="ag1_y" value="yes" checked>
+                            <label for="ag1_y" style="font-size: 20px;">동의함.</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="ag1" id="ag1_n" value="no">
+                            <label for="ag1_n" style="font-size: 20px;">동의하지 않음.</label>
+                        </div>
+                    </div>
+
+                    <!-- Section 2 -->
+                    <span class="section-label">2. 고유식별정보의 수집·이용 내역</span>
+                    <table class="consent-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">항목</th>
+                                <th style="width: 40%;">수집 / 이용</th>
+                                <th style="width: 30%;">보유 기간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>주민등록번호 및 주민등록증 사본</td>
+                                <td>국세청 소득신고</td>
+                                <td>5년</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 12px; color: #666; margin-bottom: 20px;">귀하께서는 위의 일반 개인정보 수집·이용에 대한 동의를 거부할 권리가
+                        있습니다. 그러나 동의를 거부할 경우 조사에 참여하실 수 없습니다.</p>
+
+                    <p class="consent-question">AG-02. 귀하께서는 위와 같은 고유식별정보를 수집, 이용하는데 동의하십니까?</p>
+                    <div class="consent-radios">
+                        <div class="radio-item">
+                            <input type="radio" name="ag2" id="ag2_y" value="yes" checked>
+                            <label for="ag2_y" style="font-size: 20px;">동의함.</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="ag2" id="ag2_n" value="no">
+                            <label for="ag2_n" style="font-size: 20px;">동의하지 않음.</label>
+                        </div>
+                    </div>
+
+                    <!-- Section 3 -->
+                    <span class="section-label">3. 개인정보 제3자 제공 내역</span>
+                    <table class="consent-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">항목</th>
+                                <th style="width: 40%;">수집 / 이용</th>
+                                <th style="width: 30%;">보유 기간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>이름, 주민번호, 사례비 금액</td>
+                                <td>국세청 소득신고</td>
+                                <td>5년</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 12px; color: #666; margin-bottom: 20px;">귀하께서는 위의 일반 개인정보 수집·이용에 대한 동의를 거부할 권리가
+                        있습니다. 그러나 동의를 거부할 경우 조사에 참여하실 수 없습니다.</p>
+
+                    <p class="consent-question">AG-03. 귀하께서는 위와 같이 개인정보를 제3자에게 제공하는데 동의하십니까?</p>
+                    <div class="consent-radios">
+                        <div class="radio-item">
+                            <input type="radio" name="ag3" id="ag3_y" value="yes" checked>
+                            <label for="ag3_y" style="font-size: 20px;">동의함.</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="ag3" id="ag3_n" value="no">
+                            <label for="ag3_n" style="font-size: 20px;">동의하지 않음.</label>
+                        </div>
+                    </div>
+
+                    <div style="height: 40px;"></div>
+
+                    <span class="section-label">4. 사례비 지급을 위해 아래 정보를 정확하게 기입 부탁드립니다.</span>
+                    <table class="consent-table bank-table">
+                        <tbody>
+                            <tr>
+                                <th>본인 명의 은행</th>
+                                <td><input type="text" class="bank-input"></td>
+                                <th>예금주 이름</th>
+                                <td><input type="text" class="bank-input"></td>
+                            </tr>
+                            <tr>
+                                <th>계좌번호</th>
+                                <td colspan="3"><input type="text" class="bank-input" placeholder="숫지만 입력"></td>
+                            </tr>
+                            <tr>
+                                <th>주민번호</th>
+                                <td colspan="3"><input type="text" class="bank-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="text-align: center; color: #ccc; font-size: 18px; margin-bottom: 40px;">XXXXXX - XXXXXXX
+                    </p>
+
+                    <!-- Date & Name -->
+                    <div class="date-section">
+                        <input type="text" class="date-input" value="2025" style="width: 100px;"> 년
+                        <input type="text" class="date-input" value="12" style="width: 60px;"> 월
+                        <input type="text" class="date-input" value="25" style="width: 60px;"> 일
+                    </div>
+
+                    <div class="name-section">
+                        성함 <input type="text" class="date-input" style="width: 150px; margin-left: 10px;">
+                    </div>
+
+                    <button class="btn-next-step" onclick="location.href='medical-info.html'">NEXT</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // ========== Header Icon Modal Functions ==========
+        function showMypageModal() {
+            document.getElementById('mypageModal').classList.add('active');
+        }
+        function closeMypageModal() {
+            document.getElementById('mypageModal').classList.remove('active');
+        }
+        function goToMypage() {
+            location.href = 'mypage.html';
+        }
+        function showExitModal() {
+            document.getElementById('exitModal').classList.add('active');
+        }
+        function closeExitModal() {
+            document.getElementById('exitModal').classList.remove('active');
+        }
+        function exitPage() {
+            window.open('', '_self', '');
+            window.close();
+            setTimeout(() => { location.href = 'index.html'; }, 100);
+        }
+    </script>
+</body>
+
+</html>

@@ -15,7 +15,50 @@
 </head>
 
 <body>
-    <div class="app-container large">
+    <div class="app-container large" style="position: relative;">
+        <!-- Global Header Icons -->
+        <div class="global-header-icons">
+            <button class="header-icon-btn" onclick="showMypageModal()">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="11" r="5" stroke="#666" stroke-width="2" />
+                    <path d="M6 26C6 20.4772 10.4772 16 16 16C21.5228 16 26 20.4772 26 26" stroke="#666"
+                        stroke-width="2" />
+                </svg>
+            </button>
+            <button class="header-icon-btn" onclick="showExitModal()">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M8 8L24 24M8 24L24 8" stroke="#666" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- MyPage Confirmation Modal -->
+        <div class="modal-overlay" id="mypageModal">
+            <div class="modal">
+                <p class="modal-description" style="text-align: center; margin-bottom: 24px; font-size: 18px;">
+                    설문 조사를 중단하고 마이페이지로 이동하시겠습니까?
+                </p>
+                <div class="modal-actions" style="display: flex; justify-content: center; gap: 12px;">
+                    <button class="btn btn-outline-primary" style="min-width: 100px;" onclick="goToMypage()">예</button>
+                    <button class="btn btn-outline-primary" style="min-width: 100px; border-color: #ccc; color: #666;"
+                        onclick="closeMypageModal()">아니요</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exit Confirmation Modal -->
+        <div class="modal-overlay" id="exitModal">
+            <div class="modal">
+                <p class="modal-description" style="text-align: center; margin-bottom: 24px; font-size: 18px;">
+                    설문을 끝내고 메타 세미나 공간으로 이동하시겠습니까?
+                </p>
+                <div class="modal-actions" style="display: flex; justify-content: center; gap: 12px;">
+                    <button class="btn btn-outline-primary" style="min-width: 100px;" onclick="exitPage()">예</button>
+                    <button class="btn btn-outline-primary" style="min-width: 100px; border-color: #ccc; color: #666;"
+                        onclick="closeExitModal()">아니요</button>
+                </div>
+            </div>
+        </div>
 
         <!-- ========== Page 2: Survey Intro ========== -->
         <section class="page-section">
@@ -70,10 +113,32 @@
             const selectedSurvey = document.querySelector('input[name="survey"]:checked');
             if (selectedSurvey) {
                 sessionStorage.setItem('selected_survey', selectedSurvey.value);
-                location.href = 'medical-info.html';
+                location.href = 'survey-info-consent.html';
             } else {
                 alert('참여할 설문을 선택해주세요.');
             }
+        }
+
+        // ========== Header Icon Modal Functions ==========
+        function showMypageModal() {
+            document.getElementById('mypageModal').classList.add('active');
+        }
+        function closeMypageModal() {
+            document.getElementById('mypageModal').classList.remove('active');
+        }
+        function goToMypage() {
+            location.href = 'mypage.html';
+        }
+        function showExitModal() {
+            document.getElementById('exitModal').classList.add('active');
+        }
+        function closeExitModal() {
+            document.getElementById('exitModal').classList.remove('active');
+        }
+        function exitPage() {
+            window.open('', '_self', '');
+            window.close();
+            setTimeout(() => { location.href = 'index.html'; }, 100);
         }
     </script>
 </body>

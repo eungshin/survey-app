@@ -15,53 +15,90 @@
 </head>
 
 <body>
-    <div class="app-container large">
+    <div class="app-container large" style="position: relative;">
+        <!-- Global Header Icons -->
+        <div class="global-header-icons">
+            <button class="header-icon-btn" onclick="showMypageModal()">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="11" r="5" stroke="#666" stroke-width="2" />
+                    <path d="M6 26C6 20.4772 10.4772 16 16 16C21.5228 16 26 20.4772 26 26" stroke="#666"
+                        stroke-width="2" />
+                </svg>
+            </button>
+            <button class="header-icon-btn" onclick="showExitModal()">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M8 8L24 24M8 24L24 8" stroke="#666" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- MyPage Confirmation Modal -->
+        <div class="modal-overlay" id="mypageModal">
+            <div class="modal">
+                <p class="modal-description" style="text-align: center; margin-bottom: 24px; font-size: 18px;">
+                    설문 조사를 중단하고 마이페이지로 이동하시겠습니까?
+                </p>
+                <div class="modal-actions" style="display: flex; justify-content: center; gap: 12px;">
+                    <button class="btn btn-outline-primary" style="min-width: 100px;" onclick="goToMypage()">예</button>
+                    <button class="btn btn-outline-primary" style="min-width: 100px; border-color: #ccc; color: #666;"
+                        onclick="closeMypageModal()">아니요</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exit Confirmation Modal -->
+        <div class="modal-overlay" id="exitModal">
+            <div class="modal">
+                <p class="modal-description" style="text-align: center; margin-bottom: 24px; font-size: 18px;">
+                    설문을 끝내고 메타 세미나 공간으로 이동하시겠습니까?
+                </p>
+                <div class="modal-actions" style="display: flex; justify-content: center; gap: 12px;">
+                    <button class="btn btn-outline-primary" style="min-width: 100px;" onclick="exitPage()">예</button>
+                    <button class="btn btn-outline-primary" style="min-width: 100px; border-color: #ccc; color: #666;"
+                        onclick="closeExitModal()">아니요</button>
+                </div>
+            </div>
+        </div>
 
         <!-- ========== Page 3: Medical Info ========== -->
         <section class="page-section">
             <div class="content-with-sidebar">
                 <!-- Progress Sidebar -->
                 <div class="progress-sidebar">
-                    <div class="progress-step completed">
+                    <div class="progress-step completed" onclick="location.href='survey-intro.html'"
+                        style="cursor: pointer;">
                         <div class="step-icon">
                             <svg width="15" height="9" viewBox="0 0 15 9" fill="none">
                                 <path d="M1 4L5 8L14 1" stroke="white" stroke-width="3" />
                             </svg>
                         </div>
-                        <span class="step-label">설문 소개 / 인증</span>
+                        <span class="step-label">참여 가능 설문</span>
                     </div>
 
-                    <div class="progress-step completed">
+                    <div class="progress-step completed" onclick="location.href='survey-info-consent.html'"
+                        style="cursor: pointer;">
                         <div class="step-icon">
                             <svg width="15" height="9" viewBox="0 0 15 9" fill="none">
                                 <path d="M1 4L5 8L14 1" stroke="white" stroke-width="3" />
                             </svg>
                         </div>
-                        <span class="step-label">설문 정보/개인정보동의</span>
+                        <span class="step-label">개인정보동의</span>
                     </div>
 
-                    <div class="progress-step active">
-                        <div class="step-icon">
-                            <svg width="15" height="9" viewBox="0 0 15 9" fill="none">
-                                <path d="M1 4L5 8L14 1" stroke="white" stroke-width="3" />
-                            </svg>
-                        </div>
+                    <div class="progress-step active" onclick="location.href='medical-info.html'"
+                        style="cursor: pointer;">
+                        <div class="step-number">3</div>
                         <span class="step-label">의료진 정보 설문</span>
                     </div>
 
-                    <div class="progress-step">
+                    <div class="progress-step" onclick="location.href='patient-cases.html'" style="cursor: pointer;">
                         <div class="step-number">4</div>
-                        <span class="step-label">환자 케이스 준비</span>
-                    </div>
-
-                    <div class="progress-step">
-                        <div class="step-number">5</div>
                         <span class="step-label">환자별 설문</span>
                     </div>
                 </div>
 
                 <!-- Main Content -->
-                <div class="card form-card">
+                <div class="card form-card scrollable-card">
                     <form id="medicalInfoForm" onsubmit="handleMedicalInfoSubmit(event)">
                         <!-- Question 1: Region -->
                         <div class="question-section">
@@ -160,6 +197,7 @@
                         <!-- Navigation Buttons -->
                         <div class="form-actions">
                             <button type="button" class="btn btn-text" onclick="history.back()">
+                                <!-- SVG omitted for brevity -->
                                 <svg width="24" height="22" viewBox="0 0 24 22" fill="none">
                                     <path d="M20 11H4M4 11L11 4M4 11L11 18" stroke="#3196FB" stroke-width="3" />
                                 </svg>
@@ -182,10 +220,50 @@
 
             if (dept3.checked) {
                 deptOtherGroup.style.display = 'block';
+                departmentOtherInput.setAttribute('required', 'required'); // Make required when visible
             } else {
                 deptOtherGroup.style.display = 'none';
+                departmentOtherInput.removeAttribute('required'); // Remove required when hidden
+                departmentOtherInput.value = ''; // Clear value when hidden
             }
         }
+
+        // Load saved data on page load
+        window.onload = function () {
+            const savedMedicalInfo = sessionStorage.getItem('medicalInfo');
+            if (savedMedicalInfo) {
+                const data = JSON.parse(savedMedicalInfo);
+
+                // Question 1: Region
+                if (data.region) {
+                    const radio = document.querySelector(`input[name="region"][value="${data.region}"]`);
+                    if (radio) radio.checked = true;
+                }
+
+                // Question 2: Hospital Type and Name
+                if (data.hospitalType) {
+                    const radio = document.querySelector(`input[name="hospitalType"][value="${data.hospitalType}"]`);
+                    if (radio) radio.checked = true;
+                }
+                document.getElementById('hospitalName').value = data.hospitalName || '';
+
+                // Question 3: Department
+                if (data.department) {
+                    const radio = document.querySelector(`input[name="department"][value="${data.department}"]`);
+                    if (radio) radio.checked = true;
+                }
+                if (data.departmentOther) {
+                    document.getElementById('departmentOther').value = data.departmentOther;
+                }
+                // Trigger toggle if '기타' is checked or deptOther has value
+                toggleDeptOther();
+
+                // Question 4: License Year
+                document.getElementById('licenseYear').value = data.licenseYear || '';
+            }
+            // Ensure initial state of deptOtherGroup is correct on load
+            toggleDeptOther();
+        };
 
         // Handle Medical Info Form Submit
         function handleMedicalInfoSubmit(e) {
@@ -193,6 +271,7 @@
 
             const hospitalName = document.getElementById('hospitalName').value;
             const licenseYear = document.getElementById('licenseYear').value;
+            const departmentOther = document.getElementById('departmentOther').value;
 
             if (!hospitalName) {
                 alert('병원명을 입력해주세요.');
@@ -204,12 +283,49 @@
                 return;
             }
 
-            // Save data to sessionStorage
-            sessionStorage.setItem('hospitalName', hospitalName);
-            sessionStorage.setItem('licenseYear', licenseYear);
+            const selectedDepartment = document.querySelector('input[name="department"]:checked');
+            if (selectedDepartment && selectedDepartment.value === '기타' && !departmentOther) {
+                alert('기타 진료과를 입력해주세요.');
+                return;
+            }
 
-            // Redirect
+            // Collect data
+            const medicalInfo = {
+                region: document.querySelector('input[name="region"]:checked')?.value,
+                hospitalType: document.querySelector('input[name="hospitalType"]:checked')?.value,
+                hospitalName: hospitalName,
+                department: selectedDepartment?.value,
+                departmentOther: selectedDepartment?.value === '기타' ? departmentOther : '',
+                licenseYear: licenseYear
+            };
+
+            // Save to sessionStorage
+            sessionStorage.setItem('medicalInfo', JSON.stringify(medicalInfo));
+
+            // Redirect to Step 4
             location.href = 'patient-cases.html';
+        }
+
+        // ========== Header Icon Modal Functions ==========
+        function showMypageModal() {
+            document.getElementById('mypageModal').classList.add('active');
+        }
+        function closeMypageModal() {
+            document.getElementById('mypageModal').classList.remove('active');
+        }
+        function goToMypage() {
+            location.href = 'mypage.html';
+        }
+        function showExitModal() {
+            document.getElementById('exitModal').classList.add('active');
+        }
+        function closeExitModal() {
+            document.getElementById('exitModal').classList.remove('active');
+        }
+        function exitPage() {
+            window.open('', '_self', '');
+            window.close();
+            setTimeout(() => { location.href = 'index.html'; }, 100);
         }
     </script>
 </body>

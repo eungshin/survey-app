@@ -28,6 +28,31 @@ body {
   padding: 89px 20px;
 }
 
+/* Global Header Icons */
+.global-header-icons {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  gap: 16px;
+  z-index: 1000;
+}
+
+.header-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-icon-btn svg {
+  width: 40px;
+  height: 40px;
+}
+
 /* ========== Sections (Pages) ========== */
 /* No longer needed for MPA, but keeping for structure if reused */
 .page-section {
@@ -255,6 +280,32 @@ body {
   background: rgba(49, 150, 251, 0.05);
 }
 
+.btn-submit-final {
+  width: 331px;
+  height: 72px;
+  background: #158EFF;
+  color: white;
+  font-size: 30px;
+  border-radius: 16px;
+  border: none;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 800;
+  margin: 40px auto 20px;
+  display: block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-submit-final:hover {
+  background: #0d7ae6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(21, 142, 255, 0.3);
+}
+
+.btn-submit-final:active {
+  transform: translateY(0);
+}
+
 .btn-submit-disabled {
   width: 331px;
   height: 72px;
@@ -383,6 +434,38 @@ body {
   transform: translate(-50%, -50%);
 }
 
+/* Checkbox specific */
+.radio-item input[type="checkbox"] {
+  appearance: none;
+  width: 21.39px;
+  height: 21.39px;
+  border: 2px solid #171717;
+  border-radius: 4px;
+  /* Square with slight radius */
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.radio-item input[type="checkbox"]:checked {
+  background: #3196FB;
+  border-color: #3196FB;
+}
+
+.radio-item input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 8px;
+  border: 2.5px solid white;
+  border-top: none;
+  border-right: none;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
 .radio-item label {
   color: #171717;
   font-size: 22px;
@@ -472,10 +555,10 @@ body {
 .progress-sidebar::before {
   content: '';
   position: absolute;
-  left: 55.9px;
-  top: 84px;
+  left: 60px;
+  top: 99px;
   width: 3px;
-  height: calc(100% - 168px);
+  height: calc(100% - 198px);
   background: #D9D9D9;
   border-radius: 2px;
   z-index: 0;
@@ -490,9 +573,9 @@ body {
 }
 
 .step-icon {
-  width: 31.8px;
-  height: 31.8px;
-  background: #CDCDCD;
+  width: 44px;
+  height: 44px;
+  background: #B4B4B4;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -500,15 +583,20 @@ body {
   flex-shrink: 0;
 }
 
-.progress-step.completed .step-icon,
-.progress-step.active .step-icon {
+.progress-step.completed .step-icon {
   background: #3196FB;
 }
 
+.progress-step.active .step-icon {
+  background: #3196FB;
+  /* Fallback if icon is used for active */
+}
+
+/* Styles for when it is a number (default) */
 .step-number {
-  width: 31.8px;
-  height: 31.8px;
-  background: #CDCDCD;
+  width: 44px;
+  height: 44px;
+  background: #B4B4B4;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -520,9 +608,23 @@ body {
   flex-shrink: 0;
 }
 
-.progress-step.completed .step-number,
-.progress-step.active .step-number {
+/* Completed Step (Blue Check) */
+.progress-step.completed .step-number {
   background: #3196FB;
+  color: white;
+  display: none;
+  /* Hide number if completed, show icon instead usually, but here we might swap elements */
+}
+
+/* Active Step (Green) */
+.progress-step.active .step-number,
+.progress-step.active .step-icon {
+  background: #10AF41;
+  color: white;
+}
+
+.progress-step.active .step-number {
+  background-color: #10AF41;
   color: white;
 }
 
@@ -734,6 +836,29 @@ body {
 }
 
 /* ========== Scrollbar Styling ========== */
+/* Global Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 6px;
+  border: 3px solid #f1f1f1;
+  /* Creates margin around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Custom Scrollbar for Survey List (Specific Override) */
 .survey-list::-webkit-scrollbar {
   width: 11px;
 }
@@ -746,6 +871,36 @@ body {
 .survey-list::-webkit-scrollbar-thumb {
   background: #3196FB;
   border-radius: 5.5px;
+  border: none;
+  /* Reset border for specific component */
+}
+
+/* ========== Scrollable Card Content ========== */
+.scrollable-card {
+  max-height: 800px;
+  overflow-y: auto;
+  padding-right: 10px;
+  /* Space for scrollbar */
+}
+
+.scrollable-card::-webkit-scrollbar {
+  width: 8px;
+  /* Slightly thinner than global */
+}
+
+.scrollable-card::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 10px 0;
+  /* Add margin to top/bottom of track */
+}
+
+.scrollable-card::-webkit-scrollbar-thumb {
+  background: #3196FB;
+  border-radius: 4px;
+}
+
+.scrollable-card::-webkit-scrollbar-thumb:hover {
+  background: #2180e0;
 }
 
 /* ========== Responsive Design ========== */
@@ -1099,4 +1254,49 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ========== Modal ========== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active .modal {
+  transform: translateY(0);
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 20px;
+  font-family: 'Nanum Gothic', sans-serif;
 }
