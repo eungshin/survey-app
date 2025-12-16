@@ -12,6 +12,8 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/design-settings.css">
+    <script src="../js/design-settings.js" defer></script>
     <style>
         .consent-card {
             max-width: 1586px;
@@ -217,7 +219,8 @@
         <div class="modal-overlay" id="mypageModal">
             <div class="modal">
                 <p class="modal-description" style="text-align: center; margin-bottom: 24px; font-size: 18px;">
-                    설문 조사를 중단하고 마이페이지로 이동하시겠습니까?
+                    설문 조사를 중단하고 마이페이지로 이동하시겠습니까?<br>
+                    <span style="color: #666; font-size: 14px;">(이전 페이지까지 설문이 저장됩니다.)</span>
                 </p>
                 <div class="modal-actions" style="display: flex; justify-content: center; gap: 12px;">
                     <button class="btn btn-outline-primary" style="min-width: 100px;" onclick="goToMypage()">예</button>
@@ -231,7 +234,8 @@
         <div class="modal-overlay" id="exitModal">
             <div class="modal">
                 <p class="modal-description" style="text-align: center; margin-bottom: 24px; font-size: 18px;">
-                    설문을 끝내고 메타 세미나 공간으로 이동하시겠습니까?
+                    설문을 끝내고 메타 세미나 공간으로 이동하시겠습니까?<br>
+                    <span style="color: #666; font-size: 14px;">(이전 페이지까지 설문이 저장됩니다.)</span>
                 </p>
                 <div class="modal-actions" style="display: flex; justify-content: center; gap: 12px;">
                     <button class="btn btn-outline-primary" style="min-width: 100px;" onclick="exitPage()">예</button>
